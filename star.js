@@ -13,13 +13,17 @@ function Star()
     this.h = 1;
     this.speed = 1;
     this.id = "r"+this.x+this.y;
+
+    this.intensity = this.scale * 255;
+
     this.insertDOM();
 }
 
 Star.prototype.insertDOM = function(){
     let div = document.createElement("div");
     let display = document.getElementById("field");
-    let color = '#ffffff';
+
+    let color = "rgb(" + this.intensity + "," + this.intensity + ","+ this.intensity+")";
 
     div.style.position = "absolute";
     div.style.left= this.x + "px";
@@ -44,11 +48,15 @@ Star.prototype.update = function()
     this.x = x3d + 300;
     this.y = y3d + 300;
 
+    let intensity = this.scale > 1.0 ? 255 : this.scale * 255;
+    let color = "rgb(" + intensity + "," + intensity + ","+ intensity+")";
+
     let m = document.getElementById(this.id);
     m.style.left = this.x + "px";
     m.style.top = this.y +"px";
     m.style.width = (4 * this.scale) + "px";
     m.style.height = (4 * this.scale) + "px";
+    m.style.backgroundColor = color;
 
     if(this.x < -this.w || this.x > (600 + this.w) || this.y < -this.h || this.y > (600+this.h))
     {

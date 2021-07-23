@@ -2,7 +2,7 @@ var main = ()=>{
 
     let stars = [];
     let pid = 0;
-    let num_stars = 100;
+    let num_stars = 200;
 
     for(let i = 0; i < num_stars; i++)
         stars.push(new Star());
